@@ -6,7 +6,6 @@ attempts = 0
 max_attempts = 6
 
 print("Вгадай, хто або що я. Це може бути живе, неживе або вигадане.")
-print(f"У тебе {max_attempts} спроб.")
 
 while attempts < max_attempts:
     guess = input("Ваша здогадка: ").strip().lower()
