@@ -39,11 +39,6 @@ while True:
         ]
         print(random.choice(responses))
 
-        if random.choice([True, False]):
-            break
-        else:
-            continue
-
     if guess in fake_items:
         print("Це щось знайоме... але не зовсім те.")
         continue
