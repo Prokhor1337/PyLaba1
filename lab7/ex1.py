@@ -3,7 +3,7 @@ import random
 objects = ["кіт", "монітор", "дракон", "стілець", "привид"]
 answer = random.choice(objects)
 attempts = 0
-max_attempts = 6
+max_attempts = 4
 
 print("Вгадай, хто або що я. Це може бути живе, неживе або вигадане.")
 
