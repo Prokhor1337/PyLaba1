@@ -1,0 +1,76 @@
+def calculate_cosmic_distance(speed_of_light_fraction, time_years):
+    return speed_of_light_fraction * time_years
+
+def calculate_simplified_gravity(mass1, mass2, cosmic_factor=1.0):
+    return mass1 * mass2 * cosmic_factor
+
+def calculate_time_dilation_approximation(speed_of_light_fraction, time_seconds):
+    if speed_of_light_fraction >= 1:
+        raise ValueError("Швидкість не може дорівнювати або перевищувати швидкість світла.")
+    return time_seconds / (1 - speed_of_light_fraction)
+
+def get_float_input(prompt, allow_zero=True, max_value=None):
+    while True:
+        try:
+            value = float(input(prompt))
+            if not allow_zero and value == 0:
+                print("Значення не може дорівнювати нулю.")
+                continue
+            if max_value is not None and value >= max_value:
+                print(f"Значення повинно бути менше ніж {max_value}.")
+                continue
+            return value
+        except ValueError:
+            print("Невірне значення. Введіть число.")
+
+def main():
+    print("Вітаємо у калькуляторі 'Таємниці Всесвіту'!")
+
+    while True:
+        print("\nЩо ви хочете обчислити?")
+        print("1 - Космічна відстань")
+        print("2 - Спрощена гравітація")
+        print("3 - Наближення сповільнення часу")
+        print("0 - Вийти")
+
+        choice = input("Ваш вибір: ")
+
+        if choice == "1":
+            print("\n--- Космічна відстань ---")
+            speed_fraction = get_float_input("Введіть частку швидкості світла (0 < x < 1): ", allow_zero=False, max_value=1)
+            time_years = get_float_input("Введіть час у роках: ")
+            result = calculate_cosmic_distance(speed_fraction, time_years)
+            print(f"Приблизна космічна відстань становить: {result} світлових років.")
+
+        elif choice == "2":
+            print("\n--- Спрощена гравітація ---")
+            mass1 = get_float_input("Введіть масу першого об'єкта: ", allow_zero=False)
+            mass2 = get_float_input("Введіть масу другого об'єкта: ", allow_zero=False)
+            factor = get_float_input("Введіть космічний фактор (за замовчуванням 1.0): ") or 1.0
+            result = calculate_simplified_gravity(mass1, mass2, factor)
+            print(f"Спрощена гравітаційна взаємодія: {result}")
+
+        elif choice == "3":
+            print("\n--- Наближення сповільнення часу ---")
+            speed_fraction = get_float_input("Введіть частку швидкості світла (менше 1): ", allow_zero=False, max_value=1)
+            time_seconds = get_float_input("Введіть час у секундах: ")
+            try:
+                result = calculate_time_dilation_approximation(speed_fraction, time_seconds)
+                print(f"Сповільнення часу (наближено): {result} секунд.")
+            except ValueError as e:
+                print(f"Помилка: {e}")
+
+        elif choice == "0":
+            print("Завершення роботи. До зустрічі у Всесвіті!")
+            break
+
+        else:
+            print("Невірний вибір. Спробуйте ще раз.")
+
+        again = input("\nБажаєте виконати ще один розрахунок? (так/ні): ").strip().lower()
+        if again not in ("так", "т", "yes", "y"):
+            print("Дякуємо за використання калькулятора 'Таємниці Всесвіту'.")
+            break
+
+if __name__ == "__main__":
+    main()
