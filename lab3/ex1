@@ -1,0 +1,34 @@
+import random
+
+print("Вітаю в грі 'Таємний код'!")
+
+digits = list('0123456789')
+random.shuffle(digits)
+secret_code = ''.join(digits[:4])
+
+attempts = 0
+
+while True:
+    guess = input("Введіть вашу версію (4 різні цифри): ")
+
+    if len(guess) != 4 or not guess.isdigit() or len(set(guess)) != 4:
+        print("Помилка: введіть рівно 4 різні цифри.")
+        continue
+
+    attempts += 1
+
+    bulls = 0
+    cows = 0
+
+    for i in range(4):
+        if guess[i] == secret_code[i]:
+            bulls += 1
+        elif guess[i] in secret_code:
+            cows += 1
+
+    print(f"Бики: {bulls}, Корови: {cows}")
+
+    if bulls == 4:
+        print(f"Вітаю! Ви вгадали код {secret_code} за {attempts} спроб(у/и)!")
+        break
+
