@@ -48,9 +48,9 @@ def create_gui(phones):
             details_var.set("")
 
     root = tk.Tk()
-    root.title("📱 Телефони з JSON")
+    root.title("Телефони з JSON")
 
-    tk.Label(root, text="🔍 Пошук:").grid(row=0, column=0, sticky="w")
+    tk.Label(root, text="Пошук:").grid(row=0, column=0, sticky="w")
     search_entry = tk.Entry(root)
     search_entry.grid(row=0, column=1, sticky="we")
 
@@ -69,7 +69,7 @@ def create_gui(phones):
     details_label = tk.Label(root, textvariable=details_var, justify="left", anchor="w")
     details_label.grid(row=2, column=0, columnspan=3, sticky="w")
 
-    save_button = tk.Button(root, text="💾 Зберегти до бази")
+    save_button = tk.Button(root, text="Зберегти до бази")
     save_button.grid(row=3, column=0, columnspan=3, pady=5)
 
     search_entry.bind("<KeyRelease>", on_search)
