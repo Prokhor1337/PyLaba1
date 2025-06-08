@@ -4,7 +4,7 @@ from aiogram.filters import Command
 from aiogram.types import Message
 from assistant import Assistant
 
-TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+TOKEN = ""
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
