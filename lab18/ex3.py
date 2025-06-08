@@ -1,7 +1,7 @@
 import aiohttp
 from unidecode import unidecode
 
-API_KEY = "d673793abcc538a52f8463fb6baeed4e"
+API_KEY = ""
 
 async def get_weather(city, mode="full"):
     city_latin = unidecode(city)
